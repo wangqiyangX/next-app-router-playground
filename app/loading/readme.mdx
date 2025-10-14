@@ -1,21 +1,21 @@
 # Loading.js
 
-`loading.js` is a file convention that lets you define fallback UI for a route segment when it's loading, enabling prefetching and instant navigation for dynamic routes.
+`loading.js` 是一种文件规范，用于为加载中的路由段定义备用界面，从而实现动态路由的预加载和即时导航。
 
-When a user navigates to a dynamic route with prefetched fallback UI, the URL updates immediately and the loading state is shown while the segment loads.
+当用户导航至带有预加载备用界面的动态路由时，URL会立即更新，并在加载过程中显示加载状态。
 
-Use filesytem hierarchy to define more or less specific fallback UI.
+通过文件系统层级结构可定义不同精度的备用界面。
 
-### Demo
+### 演示
 
-- Navigate between categories using the menu above.
-- **Instant navigation**: Even though the new route segment is still rendering on the server, we can instantly navigate (update the url and render fallback UI) to the new route. The actual segment content streams in once rendering is complete.
+- 使用上方菜单在分类间导航。
+- **即时导航**：即使新路由段仍在服务器端渲染，我们也能即时导航（更新URL并渲染备用界面）至新路由。实际内容将在渲染完成后流式加载。
 
-#### Notes
+#### 注意事项
 
-- An artificial delay is added to pages to simulate a slow data request and make the loading state more noticeable.
+- 页面添加了人工延迟以模拟数据请求缓慢，使加载状态更明显。
 
-### Links
+### 相关链接
 
-- [Docs](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming)
-- [Code](https://github.com/vercel/next-app-router-playground/tree/main/app/loading)
+- [文档](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming)
+- [代码](https://github.com/vercel/next-app-router-playground/tree/main/app/loading)

@@ -28,7 +28,7 @@ export default async function Layout({
 
   return (
     <>
-      <Boundary label="Demo" kind="solid" animateRerendering={false}>
+      <Boundary label="演示" kind="solid" animateRerendering={false}>
         <Mdx source={readme} collapsed={true} />
       </Boundary>
       <Boundary
@@ -41,7 +41,7 @@ export default async function Layout({
           <Tabs
             basePath={`/${demo.slug}`}
             items={[
-              { text: 'Home' },
+              { text: '首页' },
               ...sections.map((x) => ({ text: x.name, slug: x.slug })),
             ]}
           />

@@ -31,7 +31,7 @@ export default async function Layout({
         <Tabs
           basePath="/patterns/breadcrumbs"
           items={[
-            { text: 'Home' },
+            { text: '首页' },
             ...categories.map((x) => ({ text: x.name, slug: x.slug })),
           ]}
         />

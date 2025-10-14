@@ -39,7 +39,7 @@ export function Prose({
           aria-expanded={!isCollapsed}
           className="mt-4 rounded-sm bg-gray-800 px-1.5 py-1 text-xs leading-none font-semibold whitespace-nowrap text-gray-300 tabular-nums hover:bg-gray-500 hover:text-white"
         >
-          {isCollapsed ? 'More' : 'Less'}
+          {isCollapsed ? '展开' : '收起'}
         </button>
       )}
     </div>

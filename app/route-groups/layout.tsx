@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Boundary label="Demo" kind="solid" animateRerendering={false}>
+      <Boundary label="演示" kind="solid" animateRerendering={false}>
         <Mdx source={Readme} collapsed={true} />
       </Boundary>
 

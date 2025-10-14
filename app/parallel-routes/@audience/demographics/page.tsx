@@ -8,7 +8,7 @@ export default function Page() {
       className="flex flex-col gap-4"
     >
       <h1 className="font-semibold text-gray-300">
-        Audience demographics stats
+        受众群体统计数据
       </h1>
 
       <div className="flex flex-col gap-2">

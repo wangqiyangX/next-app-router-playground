@@ -29,7 +29,7 @@ export default async function Page({
       <div className="flex flex-col gap-4">
         <div className="flex justify-between">
           <h1 className="text-xl font-semibold text-gray-300">
-            All{' '}
+            全部{' '}
             <span className="font-mono tracking-tighter text-gray-600">
               ({products.length})
             </span>

@@ -4,7 +4,7 @@ import { ProductCard } from '#/ui/product-card';
 
 export default async function Page() {
   return (
-    <Boundary label="page.tsx (statically inferred)">
+    <Boundary label="page.tsx (静态推断)">
       <ProductList />
     </Boundary>
   );
@@ -19,10 +19,10 @@ async function ProductList() {
   const products = db.product.findMany({ limit: 9 });
 
   return (
-    <Boundary label="<ProductList> (Cacheable)" size="small">
+    <Boundary label="<ProductList> (可缓存)" size="small">
       <div className="flex flex-col gap-4">
         <h1 className="text-xl font-semibold text-gray-300">
-          All{' '}
+          全部{' '}
           <span className="font-mono tracking-tighter text-gray-600">
             ({products.length})
           </span>

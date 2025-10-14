@@ -6,7 +6,7 @@ import { ProductCard } from '#/ui/product-card';
 
 export default async function Page() {
   return (
-    <Boundary label="page.tsx (Cacheable)">
+    <Boundary label="page.tsx (可缓存)">
       <ProductList />
     </Boundary>
   );
@@ -22,7 +22,7 @@ async function ProductList() {
     <Boundary label="<ProductList>" size="small">
       <div className="flex flex-col gap-4">
         <h1 className="text-xl font-semibold text-gray-300">
-          All{' '}
+          全部{' '}
           <span className="font-mono tracking-tighter text-gray-600">
             ({products.length})
           </span>

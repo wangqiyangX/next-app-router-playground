@@ -7,7 +7,7 @@ export default function BuggyButton() {
   const [clicked, setClicked] = React.useState(false);
 
   if (clicked) {
-    throw new Error('Oh no! Something went wrong.');
+    throw new Error('糟糕！出了点问题。');
   }
 
   return (
@@ -17,7 +17,7 @@ export default function BuggyButton() {
         setClicked(true);
       }}
     >
-      Trigger Error
+      触发错误
     </Button>
   );
 }

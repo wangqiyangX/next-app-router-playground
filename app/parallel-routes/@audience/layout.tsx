@@ -14,9 +14,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Tabs
         basePath={`/${demo.slug}`}
         items={[
-          { text: 'Home' },
-          { text: 'Demographics', slug: 'demographics' },
-          { text: 'Subscribers', slug: 'subscribers' },
+          { text: '首页' },
+          { text: '群体统计', slug: 'demographics' },
+          { text: '订阅者', slug: 'subscribers' },
         ]}
       />
 

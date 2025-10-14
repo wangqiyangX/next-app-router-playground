@@ -9,7 +9,7 @@ const ContextClickCounter = () => {
 
   return (
     <Boundary
-      label="useContext Hook (Client Environment)"
+      label="useContext Hook (客户端环境)"
       color="blue"
       size="small"
       animateRerendering={false}
@@ -18,7 +18,7 @@ const ContextClickCounter = () => {
         onClick={() => setCount(count + 1)}
         className="rounded-lg bg-gray-700 px-3 py-1 text-sm font-medium text-gray-100 tabular-nums hover:bg-gray-500 hover:text-white"
       >
-        {count} Clicks
+        {count} 次
       </button>
     </Boundary>
   );
@@ -35,7 +35,7 @@ export const Counter = () => {
       animateRerendering={false}
     >
       <div className="span text-xl font-bold text-white">
-        <span className="tabular-nums">{count}</span> Clicks
+        <span className="tabular-nums">{count}</span> 次
       </div>
     </Boundary>
   );

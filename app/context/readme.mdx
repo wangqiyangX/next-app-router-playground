@@ -1,16 +1,15 @@
-# Client Context
+# 客户端上下文
 
-Importing a component into a file marked with `'use client'` makes it part of the client bundle. This means you can't import Server Components into Client Components.
+将组件导入标记为`'use client'`的文件中，该组件将成为客户端程序包的一部分。这意味着您无法将服务器组件导入客户端组件。
+但是，您可以将服务器组件作为 prop（或子组件）传递给客户端组件。这使您可以在客户端渲染的 UI 中可视化地嵌套服务器组件。
 
-However, you can pass a Server Component as a prop (or child) to a Client Component. This lets you visually nest Server Components inside client-rendered UI.
+通过这种模式，您可以将客户端上下文提供程序放置在树的高处，并仍然在其中嵌套服务器组件。更深层次的客户端组件可以访问共享上下文，即使它们之间有服务器组件。
 
-With this pattern, you can place a client context provider high in the tree and still nest Server Components inside it. Client Components deeper down can access the shared context—even if a Server Component sits between them.
+### 演示
 
-### Demo
+- **共享状态**：尝试增加计数器并在类别之间导航。
 
-- **Shared State**: Try incrementing the counter and navigating between categories.
-
-### Links
+### 相关链接
 
 - [Docs](https://nextjs.org/docs/getting-started/react-essentials#context)
 - [Code](https://github.com/vercel/next-app-router-playground/tree/main/app/context)

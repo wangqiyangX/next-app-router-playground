@@ -35,34 +35,34 @@ export type Demo = {
 export type DemoCategory = { name: string; items: Demo[] };
 
 const sections: Section[] = [
-  { id: '1', name: 'Clothing', slug: 'clothing', categories: ['1', '2', '3'] },
+  { id: '1', name: '服装', slug: 'clothing', categories: ['1', '2', '3'] },
   {
     id: '2',
-    name: 'Electronics',
+    name: '电子产品',
     slug: 'electronics',
     categories: ['4', '5', '6'],
   },
-  { id: '3', name: 'Sports', slug: 'sports', categories: ['7', '8', '9'] },
+  { id: '3', name: '运动', slug: 'sports', categories: ['7', '8', '9'] },
 ];
 
 const categories: Category[] = [
-  { id: '1', name: 'Tops', slug: 'tops', section: '1', products: ['1'] },
-  { id: '2', name: 'Shorts', slug: 'shorts', section: '1', products: ['2'] },
-  { id: '3', name: 'Shoes', slug: 'shoes', section: '1', products: ['3'] },
-  { id: '4', name: 'Phones', slug: 'phones', section: '2', products: ['4'] },
-  { id: '5', name: 'Laptops', slug: 'laptops', section: '2', products: ['5'] },
-  { id: '6', name: 'Tablets', slug: 'tablets', section: '2', products: ['6'] },
-  { id: '7', name: 'Balls', slug: 'balls', section: '3', products: ['7'] },
+  { id: '1', name: '上衣', slug: 'tops', section: '1', products: ['1'] },
+  { id: '2', name: '短裤', slug: 'shorts', section: '1', products: ['2'] },
+  { id: '3', name: '鞋子', slug: 'shoes', section: '1', products: ['3'] },
+  { id: '4', name: '手机', slug: 'phones', section: '2', products: ['4'] },
+  { id: '5', name: '笔记本电脑', slug: 'laptops', section: '2', products: ['5'] },
+  { id: '6', name: '平板', slug: 'tablets', section: '2', products: ['6'] },
+  { id: '7', name: '球', slug: 'balls', section: '3', products: ['7'] },
   {
     id: '8',
-    name: 'Equipment',
+    name: '设备',
     slug: 'equipment',
     section: '3',
     products: ['8'],
   },
   {
     id: '9',
-    name: 'Accessories',
+    name: '配件',
     slug: 'accessories',
     section: '3',
     products: ['9'],
@@ -70,80 +70,80 @@ const categories: Category[] = [
 ];
 
 const products: Product[] = [
-  { id: '1', name: 'Top', image: 'top.png', category: '1' },
-  { id: '2', name: 'Shorts', image: 'shorts.png', category: '2' },
-  { id: '3', name: 'Shoes', image: 'shoes.png', category: '3' },
+  { id: '1', name: '上衣', image: 'top.png', category: '1' },
+  { id: '2', name: '短裤', image: 'shorts.png', category: '2' },
+  { id: '3', name: '鞋子', image: 'shoes.png', category: '3' },
 
-  { id: '4', name: 'Phone', image: 'phone.png', category: '4' },
-  { id: '5', name: 'Laptop', image: 'laptop.png', category: '5' },
-  { id: '6', name: 'Tablet', image: 'tablet.png', category: '6' },
-  { id: '7', name: 'Basketball', image: 'balls.png', category: '7' },
-  { id: '8', name: 'Weights', image: 'weights.png', category: '8' },
-  { id: '9', name: 'Gloves', image: 'gloves.png', category: '9' },
+  { id: '4', name: '手机', image: 'phone.png', category: '4' },
+  { id: '5', name: '笔记本电脑', image: 'laptop.png', category: '5' },
+  { id: '6', name: '平板', image: 'tablet.png', category: '6' },
+  { id: '7', name: '篮球', image: 'balls.png', category: '7' },
+  { id: '8', name: '配重', image: 'weights.png', category: '8' },
+  { id: '9', name: '手套', image: 'gloves.png', category: '9' },
 ];
 
 const demos = [
   {
-    name: 'Layouts',
+    name: '布局',
     items: [
       {
         slug: 'layouts',
-        name: 'Nested Layouts',
-        description: 'Create UI that is shared across routes',
+        name: '嵌套布局',
+        description: '创建跨路由共享的 UI',
       },
       {
         slug: 'route-groups',
-        name: 'Route Groups',
-        description: 'Organize routes without affecting URL paths',
+        name: '路由组',
+        description: '在不影响 URL 路径的情况下组织路由',
       },
       {
         slug: 'parallel-routes',
-        name: 'Parallel Routes',
-        description: 'Render multiple pages in the same layout',
+        name: '并行路由',
+        description: '在同一布局中渲染多个页面',
       },
     ],
   },
   {
-    name: 'File Conventions',
+    name: '文件约定',
     items: [
       {
         slug: 'loading',
-        name: 'Loading',
+        name: '加载中',
         description:
-          'Create meaningful Loading UI for specific parts of an app',
+          '创建有意义的加载中界面以适应应用的特定部分',
       },
       {
         slug: 'error',
-        name: 'Error',
-        description: 'Create Error UI for specific parts of an app',
+        name: '错误',
+        description: '为应用的特定部分创建错误界面',
       },
       {
         slug: 'not-found',
-        name: 'Not Found',
-        description: 'Create Not Found UI for specific parts of an app',
+        name: '未找到',
+        description: '为应用的特定部分创建未找到界面',
       },
     ],
   },
   {
-    name: 'Caching',
+    name: '缓存',
     items: [
       {
         slug: 'cached-routes',
-        name: 'Cached Route Segments',
-        nav_title: 'Cached Routes',
-        description: 'Cache the rendered output of a route segment',
+        name: '缓存的路由片段',
+        nav_title: '缓存的路由',
+        description: '缓存路由片段的渲染输出',
       },
       {
         slug: 'cached-components',
-        name: 'Cached React Server Components',
-        nav_title: 'Cached Components',
+        name: '缓存的 React 服务器组件',
+        nav_title: '缓存的组件',
         description:
-          'Cache the rendered output of an individual React Server Component',
+          '缓存单个 React 服务器组件的渲染输出',
       },
       {
         slug: 'cached-functions',
-        name: 'Cached Functions',
-        description: 'Cache the computed result of a regular function',
+        name: '缓存的函数',
+        description: '缓存普通函数的计算结果',
       },
     ],
   },
@@ -153,24 +153,24 @@ const demos = [
       {
         slug: 'use-link-status',
         name: 'useLinkStatus',
-        description: 'Create inline visual feedback for link interactions',
+        description: '为链接交互创建内联视觉反馈',
       },
     ],
   },
   {
-    name: 'Misc',
+    name: '杂项',
     items: [
       {
         slug: 'view-transitions',
-        name: 'View Transitions',
+        name: '视图过渡',
         description:
-          'Use animations to help users understand the relationship between the two views',
+          '使用动画帮助用户理解两个视图之间的关系',
       },
       {
         slug: 'context',
-        name: 'Client Context',
+        name: '客户端上下文',
         description:
-          'Pass context between Client Components that cross Server/Client Component boundary',
+          '在跨越服务器/客户端组件边界的客户端组件之间传递上下文',
       },
     ],
   },

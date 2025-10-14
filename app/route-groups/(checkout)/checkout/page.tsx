@@ -8,10 +8,10 @@ export default function Page() {
   return (
     <Boundary label="(checkout)/page.tsx" className="flex flex-col gap-9">
       <div className="flex">
-        <Tab item={{ text: 'Back', slug: demo.slug }} />
+        <Tab item={{ text: '返回', slug: demo.slug }} />
       </div>
       <div className="flex flex-col gap-4">
-        <h1 className="text-xl font-semibold text-gray-300">Checkout</h1>
+        <h1 className="text-xl font-semibold text-gray-300">结账</h1>
 
         <div className="flex flex-col gap-2">
           <div className="h-2 w-4/5 rounded-full bg-gray-800" />

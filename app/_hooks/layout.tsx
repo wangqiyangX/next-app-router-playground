@@ -29,7 +29,7 @@ export default async function Layout({
         <Tabs
           basePath="/hooks"
           items={[
-            { text: 'Home' },
+            { text: '首页' },
             ...sections.map((x) => ({ text: x.name, slug: x.slug })),
           ]}
         />

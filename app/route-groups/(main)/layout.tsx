@@ -16,10 +16,10 @@ export default async function Layout({
       <Tabs
         basePath={`/${demo.slug}`}
         items={[
-          { text: 'Home' },
+          { text: '首页' },
           ...sections.map((x) => ({ text: x.name, slug: x.slug })),
-          { text: 'Checkout', slug: 'checkout' },
-          { text: 'Blog', slug: 'blog' },
+          { text: '结账', slug: 'checkout' },
+          { text: '博客', slug: 'blog' },
         ]}
       />
 

@@ -1,51 +1,51 @@
 # useLinkStatus
 
-`useLinkStatus` is a Client Component hook that tracks the **pending** state of a `<Link>`. Use it to show inline visual feedback (like spinners or text glimmers) while a navigation to a new route completes.
+`useLinkStatus` 是一个客户端组件钩子，用于追踪 `<Link>` 的 **待处理** 状态。当导航至新路由完成时，可使用它来显示内联视觉反馈（如旋转图标或文字闪烁效果）。
 
-`useLinkStatus` is useful when:
+`useLinkStatus` 在以下情况下非常有用：
 
-- Prefetching is disabled or in progress.
-- The destination route is dynamic **and** doesn't include a `loading.js` file that would allow an instant navigation.
+- 预取被禁用或正在进行中。
+- 目标路由是动态的 **并且** 不包含 `loading.js` 文件，这将允许即时导航。
 
-**Note:** We recommend using `loading.js` and not disabling prefetching. This allows Next.js to [instantly navigate](/loading) to the new route and show a loading state while the rest of the page loads.
+**注意：** 我们建议使用 `loading.js` 并且不要禁用预取。这允许 Next.js [即时导航](/loading) 到新路由，并在页面其余部分加载时显示加载状态。
 
-### Demo
+### 演示
 
-1. Navigate between sub-categories (e.g. Clothing > Tops) below.
-2. Notice the delay before the new page loads. During this time, we dim the nav item to show the navigation is in progress.
+1. 在下面的子类别之间导航（例如，服装 > 上衣）。
+2. 注意新页面加载前的延迟。在此期间，我们会将导航项变暗，以显示导航正在进行中。
 
-#### Notes
+#### 注意
 
-- Sub-category pages include an artificial delay and do not include a `loading.js` file to make the pending state more noticeable.
+- 子类别页面包含人为设置的延迟，并且不包含 `loading.js` 文件，以使待处理状态更加明显。
 
-## Links
+## 相关链接
 
 - [Docs](https://nextjs.org/docs/app/api-reference/functions/use-link-status)
 - [Code](https://github.com/vercel/next-app-router-playground/tree/main/app/use-link-status)
 
-## Pending UI design tips
+## 待处理 UI 设计提示
 
-- **Keep subtle and avoid layout shift**: Pending indicators should feel lightweight and unobtrusive. To avoid layout shift, keep them out of the normal document flow (e.g. `position: absolute`) or use a CSS approach that doesn't create an element (e.g. animating the `background` position of a gradient).
-- **Handle fast navigations gracefully**: Prevent unnecessary flashes of pending UI on fast navigations by adding an initial animation delay (e.g. 150ms) and starting an animation as invisible (e.g. `opacity: 0`) or outside the parent's clipping boundary (e.g. `overflow: hidden` and `translate: -100%`).
-- **Place indicators near interaction**: Visual feedback should appear close to where the user clicked or tapped. This helps reinforce the connection between the feedback and their action.
-- **Design proactively**: It is fine to preemptively include pending indicators for key nav items even when most navigations are fast. If the transition is instant or fast, the indicator won't have a chance to show. If the navigation takes time for whatever reason, the user will get helpful feedback.
+- **保持微妙，避免布局偏移**：待处理指示器应感觉轻量且不显眼。为避免布局偏移，请将它们放在正常文档流之外（例如 `position: absolute`）或使用不会创建元素的 CSS 方法（例如动画渐变的 `background` 位置）。
+- **优雅处理快速导航**：通过添加初始动画延迟（例如 150 毫秒）并将动画设置为不可见（例如 `opacity: 0`）或在父元素的裁剪边界之外（例如 `overflow: hidden` 和 `translate: -100%`）来防止快速导航时不必要的待处理 UI 闪烁。
+- **将指示器放置在交互附近**：视觉反馈应出现在用户单击或点击的位置附近。这有助于加强反馈与其操作之间的联系。
+- **主动设计**：即使在大多数导航快速的情况下，预先包含关键导航项的待处理指示器也是可以的。如果过渡是瞬时或快速的，指示器将没有机会显示。如果导航由于某种原因需要时间，用户将获得有用的反馈。
 
-## Loading UI deep dive
+## 加载界面深度解析
 
-Next.js routing is server centric. This has many benefits, but means navigations require a round trip to the server to get information about the new route.
+Next.js 路由以服务器为中心。这有很多好处，但意味着导航需要往返于服务器以获取有关新路由的信息。
 
-Next.js alleviates this tradeoff through strategies like prerendering, prefetching and streaming. As well as API's developers can use like `loading.js` and `useLinkStatus`.
+Next.js 通过预渲染、预取和流式传输等策略来缓解这种权衡。此外，开发人员可以使用 `loading.js` 和 `useLinkStatus` 等 API。
 
-### Improving loading user experience
+### 改善加载用户体验
 
-When a user navigates (e.g. clicking a `<Link>`), there are two phases before the navigation is fully complete:
+当用户导航时（例如，单击 `<Link>`），在导航完全完成之前会有两个阶段：
 
-1. **Pending phase**: Before the navigation and the browser URL is updated, **while** the user is still on the current route.
-2. **Loading phase**: After the navigation and the browser URL is updated but **before** all content of the new route is loaded.
+1. **待处理阶段**：在导航和浏览器 URL 更新之前，**当**用户仍在当前路由上时。
+2. **加载阶段**：在导航和浏览器 URL 更新之后，但**在**新路由的所有内容加载之前。
 
-Next.js provides features and APIs to improve the loading experiences in both phases:
+Next.js 提供了功能和 API 来改善这两个阶段的加载体验：
 
-- **Prefetching**: `<Link>` prefetches routes to enable instant navigation. Static routes are fully prefetched by default. Dynamic routes are partially prefetched up to the nearest segment with a `loading.js` file. Including the segments fallback UI in the prefetch allows instant navigation for dynamic routes.
-- **Pending UI**: Use `useLinkStatus` and `useFormStatus` to show visual feedback to the user during the pending phase.
-- **Instant navigations and Loading UI**: Use `loading.js` to define fallback UI for a route segment. On navigation, this essentially skips the pending phase and immediately shows something to the user while the rest of the content loads.
-- **Streaming**: Use `<Suspense>` boundaries to further split server-side work into smaller parts and show something to the user earlier in the loading phase.
+- **预取**：`<Link>` 预取路由以实现即时导航。静态路由默认完全预取。动态路由部分预取到最近的带有 `loading.js` 文件的片段。将片段的后备 UI 包含在预取中可以实现动态路由的即时导航。
+- **待处理 UI**：使用 `useLinkStatus` 和 `useFormStatus` 在待处理阶段向用户显示视觉反馈。
+- **即时导航和加载 UI**：使用 `loading.js` 为路由片段定义后备 UI。在导航时，这基本上跳过了待处理阶段，并立即向用户显示内容，同时其余内容正在加载。
+- **流式传输**：使用 `<Suspense>` 边界进一步将服务器端工作拆分为更小的部分，并在加载阶段更早地向用户显示内容。

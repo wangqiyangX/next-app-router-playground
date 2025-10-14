@@ -34,7 +34,7 @@ export default async function Layout({
       <Tabs
         basePath={`/${demo.slug}/${section.slug}`}
         items={[
-          { text: 'All' },
+          { text: '全部' },
           ...categories.map((x) => ({ text: x.name, slug: x.slug })),
         ]}
       />

@@ -18,17 +18,17 @@ export default async function Layout({
 }) {
   return (
     <>
-      <Boundary label="Demo" kind="solid" animateRerendering={false}>
+      <Boundary label="演示" kind="solid" animateRerendering={false}>
         <Mdx source={Readme} collapsed={true} />
       </Boundary>
 
       <Boundary
-        label="layout.tsx (Server Environment)"
+        label="layout.tsx (服务器环境)"
         kind="solid"
         animateRerendering={false}
       >
         <Boundary
-          label="Context Provider (Client Environment)"
+          label="Context Provider (客户端环境)"
           color="blue"
           animateRerendering={false}
         >

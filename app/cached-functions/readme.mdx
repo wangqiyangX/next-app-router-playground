@@ -9,8 +9,8 @@ export const demo = db.demo.find({ where: { slug: 'cached-functions' } });
 
 # !!col
 
-- Mark a regular function as _cacheable_ by adding the `use cache` directive to the top of the function definition.
-- When a cacheable function is called with the same inputs, it reuses the cached result if it exists, otherwise it runs and caches the output.
+- 在函数定义开头添加 `use cache` 指令，将常规函数标记为可缓存。
+- 当可缓存函数被相同输入调用时，若存在缓存结果则直接复用；否则执行计算并缓存输出结果。
 
 # !!col
 
@@ -33,13 +33,13 @@ export default async function Page() {
 
 </Grid>
 
-### Demo
+### 演示
 
-- The data fetching function to get the list of products is annotated with `use cache`.
-- An artificial one second delay is added to the function to make the difference more noticeable.
-- Since the function is cacheable, the delay only happens the first time the function is called.
-- `layout.tsx`, `page.tsx` and `<ProductList>` aren't explicitly annotated with `use cache`, but Next.js infers they're static because they do not use any Dynamic APIs. If they started to, Next.js will guide the developer to either add `use cache` or a `<Suspense>` boundary.
+- 获取产品列表的数据获取函数已添加 `use cache` 注解。
+- 为使差异更明显，该函数中添加了人为设置的一秒延迟。
+- 由于该函数可缓存，延迟仅在首次调用时发生。
+- `layout.tsx`、`page.tsx` 和 `<ProductList>` 未显式添加 `use cache` 注解，但 Next.js 通过检测其未使用任何动态 API 推断为静态组件。若后续引入动态操作，Next.js 将引导开发者添加 `use cache` 或 `<Suspense>` 边界组件。
 
-### Notes
+### 注意事项
 
-- This demo uses the experimental `use cache` directive and describes caching behavior once stable.
+- 此演示使用了实验性的 `use cache` 指令，并描述了稳定后缓存行为。

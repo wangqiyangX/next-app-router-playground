@@ -10,7 +10,7 @@ export default function Byline() {
           target="_blank"
           rel="noreferrer"
         >
-          Source code
+          源代码
         </a>
         <span className="text-gray-800">/</span>
         <a
@@ -19,7 +19,7 @@ export default function Byline() {
           target="_blank"
           rel="noreferrer"
         >
-          Docs
+          文档
         </a>
         <span className="text-gray-800">/</span>
         <a
@@ -28,7 +28,7 @@ export default function Byline() {
           target="_blank"
           rel="noreferrer"
         >
-          Deploy on
+          部署于
           <svg
             aria-label="Vercel logotype"
             role="img"

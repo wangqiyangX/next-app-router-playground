@@ -15,7 +15,7 @@ export default function NotFound() {
       </div>
 
       <div className="flex">
-        <Tab item={{ text: 'Home', slug: demo.slug }} />
+        <Tab item={{ text: '首页', slug: demo.slug }} />
       </div>
     </Boundary>
   );

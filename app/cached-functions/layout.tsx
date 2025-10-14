@@ -21,12 +21,12 @@ export default async function Layout({
 }) {
   return (
     <>
-      <Boundary label="Demo" kind="solid" animateRerendering={false}>
+      <Boundary label="演示" kind="solid" animateRerendering={false}>
         <Mdx source={readme} collapsed={true} />
       </Boundary>
 
       <Boundary
-        label="layout.tsx (statically inferred)"
+        label="layout.tsx (静态推断)"
         kind="solid"
         animateRerendering={false}
       >

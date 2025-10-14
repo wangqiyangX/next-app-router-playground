@@ -77,7 +77,7 @@ export default async function Page({
                 'transition-to-detail': 'animate-morph',
               }}
             >
-              <div>Shop</div>
+              <div>商店</div>
             </SharedTransition>
           </TransitionLink>
 

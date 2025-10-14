@@ -1,17 +1,17 @@
 # Error.js
 
-`error.js` is a file convention that lets you define fallback UI for a route segment to show when unexpected runtime errors occur.
+`error.js` 是一种文件规范，用于为路由段定义在发生意外运行时错误时显示的备用界面。
 
-When an error is thrown in a route segment or its children, the fallback UI from `error.js` renders instead. The rest of the application remains interactive and the user can attempt to reset or recover from the error.
+当路由段或其子节点抛出错误时，将渲染来自 `error.js` 的备用界面。应用程序其余部分保持交互性，用户可尝试重置或恢复错误。
 
-Use filesytem hierarchy to define more or less specific fallback UI.
+通过文件系统层级定义不同粒度的备用界面。
 
-### Demo
+### 演示
 
-- Navigate through the categories and trigger an error in one of the nested layouts.
-- **Error containment**: Error boundaries confine unexpected runtime errors to their segment, preventing them from affecting the rest of the app.
+- 浏览分类目录，在嵌套布局中触发错误
+- **错误隔离机制**：错误边界将意外运行时错误限制在所属路由段内，防止其影响应用其他部分
 
-### Links
+### 相关链接
 
-- [Docs](https://nextjs.org/docs/app/building-your-application/routing/error-handling)
-- [Code](https://github.com/vercel/next-app-router-playground/tree/main/app/error-handling)
+- [文档](https://nextjs.org/docs/app/building-your-application/routing/error-handling)
+- [代码](https://github.com/vercel/next-app-router-playground/tree/main/app/error-handling)

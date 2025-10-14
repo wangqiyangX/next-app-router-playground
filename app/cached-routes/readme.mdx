@@ -9,7 +9,7 @@ export const demo = db.demo.find({ where: { slug: 'cached-routes' } });
 
 # !!col
 
-Mark a route segment as _cacheable_ by adding the `use cache` directive to the top of the `layout.tsx` or `page.tsx` file.
+通过在 `layout.tsx` 或 `page.tsx` 文件顶部添加 `use cache` 指令，将路由段标记为可缓存。
 
 # !!col
 
@@ -28,10 +28,10 @@ export default async function Page() {
 
 # !!col
 
-#### On the client
+#### 在客户端
 
-- The router first checks the client cache for a valid cache entry before making a new request to the server.
-- Cache entries in the server response update the client cache.
+- 路由器首先检查客户端缓存中是否存在有效的缓存条目，然后才向服务器发出新请求。
+- 服务器响应中的缓存条目会更新客户端缓存。
 
 # !!col
 
@@ -49,9 +49,9 @@ export default async function Page() {
 
 # !!col
 
-#### On the server
+#### 在服务器端
 
-- The renderer first checks the server cache for a valid cache entry before rendering a new result and updating the server cache.
+- 渲染器首先检查服务器缓存中是否存在有效的缓存条目，然后才会渲染新结果并更新服务器缓存。
 
 # !!col
 
@@ -69,12 +69,12 @@ export default async function Page() {
 
 # !!col
 
-#### Prerendering
+#### 预渲染
 
-- A cacheable route segment can be prerendered ahead of time, either at build time or during background revalidation.
-- The prerendered result is distributed across a global content delivery network (CDN).
-- At runtime, the CDN serves the closest static result to the client.
-- `layout.tsx` and `page.tsx` are independently cacheable. This means a `layout.tsx` can be prerendered, while its `page.tsx` can be dynamically rendered at request time.
+- 可缓存的路由段可以提前进行预渲染，既可以在构建时，也可以在后台重新验证期间进行。
+- 预渲染的结果会分发到全球内容分发网络（CDN）。
+- 在运行时，CDN 会向客户端提供最近的静态结果。
+- `layout.tsx` 和 `page.tsx` 是独立可缓存的。这意味着 `layout.tsx` 可以预渲染，而其 `page.tsx` 可以在请求时动态渲染。
 
 # !!col
 
@@ -88,9 +88,9 @@ export default async function Page() {
 
 </Grid>
 
-### Demo
+### 演示
 
-- An artificial one second delay is added to the `page.tsx` to make the difference more obvious.
+- 在 `page.tsx` 中添加了人为的一秒延迟，以使差异更加明显。
 
   ```tsx app/page.tsx
   'use cache';
@@ -104,8 +104,8 @@ export default async function Page() {
   }
   ```
 
-- Since the whole route is cacheable, this delay only happens the first time the function runs, during prerendering.
+- 由于整个路由是可缓存的，因此此延迟仅在函数首次运行时发生，即在预渲染期间。
 
-### Notes
+### 注意事项
 
-- This demo uses the experimental `use cache` directive and describes caching behavior once stable.
+- 此演示使用了实验性的 `use cache` 指令，并描述了稳定后缓存行为。

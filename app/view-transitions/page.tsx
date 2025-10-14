@@ -29,7 +29,7 @@ export default async function Page() {
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2 text-xl font-medium text-gray-300">
             <SharedTransition name="navigation-title" share="animate-morph">
-              <h1>Shop</h1>
+              <h1>商店</h1>
             </SharedTransition>
             <span className="font-mono tracking-tighter text-gray-600">
               ({products.length})
