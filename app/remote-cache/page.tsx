@@ -7,7 +7,7 @@ import { connection } from 'next/server';
 
 export default async function Page() {
   return (
-    <Boundary label="page.tsx (statically inferred)" animateRerendering={false}>
+    <Boundary label="page.tsx (静态推断)" animateRerendering={false}>
       <ProductList />
     </Boundary>
   );
@@ -19,13 +19,13 @@ async function ProductList() {
 
   return (
     <Boundary
-      label="<ProductList> (statically inferred)"
+      label="<ProductList> (静态推断)"
       size="small"
       animateRerendering={false}
     >
       <div className="flex flex-col gap-4">
         <h1 className="text-xl font-semibold text-gray-300">
-          All{' '}
+          全部{' '}
           <span className="font-mono tracking-tighter text-gray-600">
             ({products.length})
           </span>
@@ -75,10 +75,10 @@ async function ProductPrice({ productId }: { productId: string }) {
   const price = await getProductPrice(productId);
 
   return (
-    <Boundary label="<ProductPrice> (Remote Cacheable)" size="small">
+    <Boundary label="<ProductPrice> (远端可缓存)" size="small">
       <div className="text-center text-sm">
-        <span className="text-gray-400">Price: </span>
-        <span className="font-semibold text-green-400">${price}</span>
+        <span className="text-gray-400">价格：</span>
+        <span className="font-semibold text-green-400">¥{price}</span>
       </div>
     </Boundary>
   );
@@ -87,7 +87,7 @@ async function ProductPrice({ productId }: { productId: string }) {
 function ProductPriceSkeleton() {
   return (
     <Boundary
-      label="<ProductPrice> (Remote Cacheable)"
+      label="<ProductPrice> (远端可缓存)"
       size="small"
       color="blue"
       animateRerendering={false}

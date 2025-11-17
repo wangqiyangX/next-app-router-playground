@@ -25,7 +25,7 @@ export default async function Layout({
       </Boundary>
 
       <Boundary
-        label="layout.tsx (statically inferred)"
+        label="layout.tsx (静态推断)"
         kind="solid"
         animateRerendering={false}
       >

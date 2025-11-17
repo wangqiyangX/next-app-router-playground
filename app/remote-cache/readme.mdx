@@ -9,10 +9,10 @@ export const demo = db.demo.find({ where: { slug: 'remote-cache' } });
 
 # !!col
 
-- Use `use cache: remote` when the cache key depends on something **private or dynamic**, or it's always accessed **after dynamic data** is read.
-- Regular `use cache` will not cache in dynamic contexts (after `await connection()`, `await cookies()`, `await headers()`, etc.).
-- `use cache: remote` caches at runtime in a remote cache, reducing origin load even in dynamic contexts.
-- Perfect for user-specific data, frequently changing data, or data accessed per-request.
+- 当缓存键依赖于**私有或动态**内容，或始终在**读取动态数据之后**访问时，使用 `use cache: remote`。
+- 常规的 `use cache` 在动态上下文中不会缓存（在 `await connection()`、`await cookies()`、`await headers()` 等之后）。
+- `use cache: remote` 在运行时将数据缓存到远程缓存中，即使在动态上下文中也能减少源服务器负载。
+- 非常适合用户特定数据、频繁变化的数据或每个请求访问的数据。
 
 # !!col
 
@@ -25,7 +25,7 @@ async function getProductPrice(id: string) {
 }
 
 async function ProductPrice({ id }: { id: string }) {
-  // Ensure dynamic context
+  // 确保动态上下文
   await connection();
   const price = await getProductPrice(id);
   return <div>Price: ${price}</div>;
@@ -42,16 +42,16 @@ export default async function Page() {
 
 </Grid>
 
-### Demo
+### 演示
 
-- **Product data** is fetched with `use cache` in `getData()` - cached in the static shell.
-- **Price data** is fetched with `use cache: remote` in `getProductPrice()` - accessed after `await connection()`, so it's cached in a remote cache at runtime.
-- Each price component calls `await connection()` to ensure it's never included in the static shell.
-- The price data function uses `cacheTag()` for targeted cache invalidation.
-- Artificial delays (1s for products, 1s for prices) make caching behavior visible.
-- Notice how product data loads once, while price data streams in per product, but is cached for subsequent requests.
+- **产品数据**通过 `getData()` 中的 `use cache` 获取 - 缓存在静态外壳中。
+- **价格数据**通过 `getProductPrice()` 中的 `use cache: remote` 获取 - 在 `await connection()` 之后访问，因此在运行时缓存到远程缓存中。
+- 每个价格组件都调用 `await connection()` 以确保它永远不会被包含在静态外壳中。
+- 价格数据函数使用 `cacheTag()` 进行针对性的缓存失效。
+- 人为延迟（产品 1 秒，价格 1 秒）使缓存行为可见。
+- 注意产品数据只加载一次，而价格数据按产品流式传入，但在后续请求中会被缓存。
 
-### Notes
+### 注意事项
 
-- This demo uses the experimental `use cache` directive and describes caching behavior once stable.
-- `use cache: remote` is essential for caching in dynamic contexts where regular `use cache` won't work.
+- 此演示使用了实验性的 `use cache` 指令，并描述了稳定后的缓存行为。
+- `use cache: remote` 对于在常规 `use cache` 无法工作的动态上下文中进行缓存至关重要。

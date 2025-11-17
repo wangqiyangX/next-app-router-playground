@@ -9,11 +9,11 @@ export const demo = db.demo.find({ where: { slug: 'private-cache' } });
 
 # !!col
 
-- Enable **runtime prefetching** of personalized content by including it in prefetch requests.
-- Use `use cache: private` when you need to cache **user-specific data** that depends on cookies, headers, or search params.
-- Unlike regular `use cache`, private caches can access request-specific APIs like `cookies()` and `headers()` directly inside the cached function.
-- Private caches are **never persisted** to cache handlers - they're only used to mark the dynamic content as runtime prefetchable.
-- Without `use cache: private`, personalized content cannot be prefetched and must wait until navigation occurs.
+- 通过将个性化内容包含在预取请求中，启用**运行时预取**。
+- 当你需要缓存**依赖于 cookies、headers 或 search params 的用户特定数据**时，使用 `use cache: private`。
+- 与普通的 `use cache` 不同，私有缓存可以直接在缓存函数内部访问请求特定的 API，如 `cookies()` 和 `headers()`。
+- 私有缓存**永远不会持久化**到缓存处理器 - 它们仅用于将动态内容标记为可运行时预取。
+- 如果不使用 `use cache: private`，个性化内容无法被预取，必须等到导航发生时才能加载。
 
 # !!col
 
@@ -24,7 +24,7 @@ async function getRecommendations(productId: string) {
   cacheTag(`recommendations-${productId}`);
   cacheLife({ stale: 60 });
 
-  // Can call cookies() INSIDE the cached function!
+  // 可以在缓存函数内部调用 cookies()！
   // !mark
   const sessionId = (await cookies()).get('session-id')?.value || 'guest';
 
@@ -32,7 +32,7 @@ async function getRecommendations(productId: string) {
 }
 
 async function Recommendations({ productId }: { productId: string }) {
-  // This will be runtime prefetched automatically
+  // 这将自动进行运行时预取
   const recommendations = await getRecommendations(productId);
 
   return (
@@ -54,21 +54,20 @@ export const unstable_prefetch = {
 
 </Grid>
 
-### Demo
+### 演示
 
-- Products labeled **"Private Cache"** link to pages that use `use cache: private` to enable runtime prefetching. The content is still dynamic, but it's prefetched
-  when the static content of the page is also prefetched.
-- Products labeled **"No Private Cache"** link to pages that don't use `use cache: private`, meaning their recommendations will be loaded after navigation.
-- **For demo purposes**, the links display visual loading states:
-  - **Pink border** with "Prefetching Private Cache..." when the runtime prefetch is in progress
-  - **Blue border** with "Prefetched Private Cache" when the runtime prefetch has completed
-  - **Gray border** for links without private cache
-- **With Private Cache**: Personalized recommendations appear instantly (runtime prefetched).
-- **Without Private Cache**: Recommendations show a loading skeleton, then appear after they're finished loading. The loading starts when the link is clicked.
-- Click "Change Session" to get different personalized recommendations - notice how Private Cache links still runtime prefetch your new session's data.
+- 标记为 **"Private Cache"** 的产品链接到使用 `use cache: private` 来启用运行时预取的页面。内容仍然是动态的，但会在预取页面的静态内容时一起被预取。
+- 标记为 **"No Private Cache"** 的产品链接到不使用 `use cache: private` 的页面，这意味着它们的推荐内容将在导航后才加载。
+- **出于演示目的**，链接会显示视觉加载状态：
+  - **粉色边框**显示 "Prefetching Private Cache..." 表示运行时预取正在进行中
+  - **蓝色边框**显示 "Prefetched Private Cache" 表示运行时预取已完成
+  - **灰色边框**表示没有私有缓存的链接
+- **使用 Private Cache**：个性化推荐立即出现（运行时预取）。
+- **不使用 Private Cache**：推荐内容显示加载骨架屏，然后在加载完成后出现。加载在点击链接时开始。
+- 点击 "Change Session" 可以获取不同的个性化推荐 - 注意 Private Cache 链接仍然会运行时预取你的新会话数据。
 
-### Notes
+### 注意事项
 
-- This demo uses the experimental `use cache` directive and describes caching behavior once stable.
-- `use cache: private` enables runtime prefetching of dynamic content by allowing `cookies()` and `headers()` inside cached functions.
-- Requires `unstable_prefetch` export with `mode: 'runtime'` and `cacheLife({ stale: 60 })` (≥30s).
+- 此演示使用了实验性的 `use cache` 指令，并描述了稳定后的缓存行为。
+- `use cache: private` 通过允许在缓存函数内部使用 `cookies()` 和 `headers()`，实现了动态内容的运行时预取。
+- 需要导出 `unstable_prefetch`，其中 `mode: 'runtime'` 和 `cacheLife({ stale: 60 })`（≥30秒）。
