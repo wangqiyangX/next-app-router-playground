@@ -8,6 +8,7 @@ export type Product = {
   name: string;
   image: string;
   category: string;
+  price: number;
 };
 
 export type Section = {
@@ -50,47 +51,43 @@ const categories: Category[] = [
   { id: '2', name: '短裤', slug: 'shorts', section: '1', products: ['2'] },
   { id: '3', name: '鞋子', slug: 'shoes', section: '1', products: ['3'] },
   { id: '4', name: '手机', slug: 'phones', section: '2', products: ['4'] },
-  { id: '5', name: '笔记本电脑', slug: 'laptops', section: '2', products: ['5'] },
+  {
+    id: '5',
+    name: '笔记本电脑',
+    slug: 'laptops',
+    section: '2',
+    products: ['5'],
+  },
   { id: '6', name: '平板', slug: 'tablets', section: '2', products: ['6'] },
   { id: '7', name: '球', slug: 'balls', section: '3', products: ['7'] },
-  {
-    id: '8',
-    name: '设备',
-    slug: 'equipment',
-    section: '3',
-    products: ['8'],
-  },
-  {
-    id: '9',
-    name: '配件',
-    slug: 'accessories',
-    section: '3',
-    products: ['9'],
-  },
+  { id: '8', name: '设备', slug: 'equipment', section: '3', products: ['8'] },
+  { id: '9', name: '配件', slug: 'accessories', section: '3', products: ['9'] },
 ];
 
 const products: Product[] = [
-  { id: '1', name: '上衣', image: 'top.png', category: '1' },
-  { id: '2', name: '短裤', image: 'shorts.png', category: '2' },
-  { id: '3', name: '鞋子', image: 'shoes.png', category: '3' },
+  { id: '1', name: '上衣', image: 'top.png', category: '1', price: 29.99 },
+  { id: '2', name: '短裤', image: 'shorts.png', category: '2', price: 39.99 },
+  { id: '3', name: '鞋子', image: 'shoes.png', category: '3', price: 89.99 },
 
-  { id: '4', name: '手机', image: 'phone.png', category: '4' },
-  { id: '5', name: '笔记本电脑', image: 'laptop.png', category: '5' },
-  { id: '6', name: '平板', image: 'tablet.png', category: '6' },
-  { id: '7', name: '篮球', image: 'balls.png', category: '7' },
-  { id: '8', name: '配重', image: 'weights.png', category: '8' },
-  { id: '9', name: '手套', image: 'gloves.png', category: '9' },
+  { id: '4', name: '手机', image: 'phone.png', category: '4', price: 699.99 },
+  {
+    id: '5',
+    name: '笔记本电脑',
+    image: 'laptop.png',
+    category: '5',
+    price: 1299.99,
+  },
+  { id: '6', name: '平板', image: 'tablet.png', category: '6', price: 499.99 },
+  { id: '7', name: '篮球', image: 'balls.png', category: '7', price: 24.99 },
+  { id: '8', name: '配重', image: 'weights.png', category: '8', price: 149.99 },
+  { id: '9', name: '手套', image: 'gloves.png', category: '9', price: 19.99 },
 ];
 
 const demos = [
   {
     name: '布局',
     items: [
-      {
-        slug: 'layouts',
-        name: '嵌套布局',
-        description: '创建跨路由共享的 UI',
-      },
+      { slug: 'layouts', name: '嵌套布局', description: '创建跨路由共享的 UI' },
       {
         slug: 'route-groups',
         name: '路由组',
@@ -109,8 +106,7 @@ const demos = [
       {
         slug: 'loading',
         name: '加载中',
-        description:
-          '创建有意义的加载中界面以适应应用的特定部分',
+        description: '创建有意义的加载中界面以适应应用的特定部分',
       },
       {
         slug: 'error',
@@ -137,13 +133,24 @@ const demos = [
         slug: 'cached-components',
         name: '缓存的 React 服务器组件',
         nav_title: '缓存的组件',
-        description:
-          '缓存单个 React 服务器组件的渲染输出',
+        description: '缓存单个 React 服务器组件的渲染输出',
       },
       {
         slug: 'cached-functions',
         name: '缓存的函数',
         description: '缓存普通函数的计算结果',
+      },
+      {
+        slug: 'remote-cache',
+        name: 'Remote Cache',
+        description:
+          'Cache data at runtime with use cache: remote in dynamic contexts',
+      },
+      {
+        slug: 'private-cache',
+        name: 'Private Cache',
+        description:
+          'Cache user-specific data with use cache: private using cookies and headers',
       },
     ],
   },
@@ -163,14 +170,12 @@ const demos = [
       {
         slug: 'view-transitions',
         name: '视图过渡',
-        description:
-          '使用动画帮助用户理解两个视图之间的关系',
+        description: '使用动画帮助用户理解两个视图之间的关系',
       },
       {
         slug: 'context',
         name: '客户端上下文',
-        description:
-          '在跨越服务器/客户端组件边界的客户端组件之间传递上下文',
+        description: '在跨越服务器/客户端组件边界的客户端组件之间传递上下文',
       },
     ],
   },
